@@ -44,10 +44,10 @@ export function TranscriptNotesGenerator() {
     setError("");
     try {
       const response = await fetch(
-        "http://127.0.0.1:5000/generate_transcript",
+        "https://legislative-alida-asdasdf-7947af67.koyeb.app/generate_transcript",
         {
           method: "POST",
-          mode: 'cors',
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
           },
@@ -79,7 +79,7 @@ export function TranscriptNotesGenerator() {
   };
 
   const handleDownloadFile = (filename: string, content: string) => {
-    const blob = new Blob([content], { type: 'text/plain' });
+    const blob = new Blob([content], { type: "text/plain" });
     const downloadUrl = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = downloadUrl;
@@ -94,7 +94,9 @@ export function TranscriptNotesGenerator() {
   };
 
   const handleDownloadNotes = () => {
-    const notesContent = `Key Sentences:\n${keySentences.join("\n")}\n\nKeywords:\n${keywords.join(", ")}`;
+    const notesContent = `Key Sentences:\n${keySentences.join(
+      "\n"
+    )}\n\nKeywords:\n${keywords.join(", ")}`;
     handleDownloadFile("notes.txt", notesContent);
   };
 
